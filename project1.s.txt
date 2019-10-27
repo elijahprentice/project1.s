@@ -1,0 +1,3 @@
+main:
+    li $v0,10       #call code 10 (exit)
+    syscall         #execute code 10 to exit
