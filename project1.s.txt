@@ -1,8 +1,9 @@
+str: .asciiz "Enter student ID: " #my ID is 2874763
 main:
-    li $v0,1            #call code 1 (print_int)
-    addi $s0,$s0,6      #$s0 = 6
-    la $a0,$s0          #$a0 = &$s0
-    syscall             #execute code 1 to print the integer
+    li $v0,8            #call code 8 (read_string)
+    la $a0,str          #$a0 = address of the string
+    li $a1,8            #read 8 characters (including null character)
+    syscall             #execute code 8 to read the string
 
     li $v0,10       #call code 10 (exit)
     syscall         #execute code 10 to exit
