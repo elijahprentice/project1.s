@@ -1,4 +1,6 @@
-str: .asciiz "Enter student ID: " #my ID is 2874763
+str: .asciiz "Enter student ID: "
+#my ID is 2874763
+
 main:
     li $v0,8            #call code 8 (read_string)
     la $a0,str          #$a0 = address of the string
