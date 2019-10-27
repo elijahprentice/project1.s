@@ -1,5 +1,5 @@
 .data
-str: .asciiz
+str: .ascii
 #my ID is 2874763
 
 .text
