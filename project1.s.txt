@@ -1,7 +1,3 @@
-.data
-str: .ascii
-#my ID is 2874763
-
 .text
 main:
     li $v0,8            #call code 8 (read_string)
@@ -15,3 +11,7 @@ main:
 
     li $v0,10       #call code 10 (exit)
     syscall         #execute code 10 to exit
+    
+    .data
+str:.ascii
+#my ID is 2874763
