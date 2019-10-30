@@ -5,11 +5,13 @@ main:
     li $a1,8                    #read 8 characters (including null character)
     syscall                     #execute code 8 to read the string
 
-    add $t0,$t0,$zero           #loop increment
+    add $t0,$t0,$zero           #loop increment (x)
     add $t1,$t1,$zero           #hold sum
     add $t2,$a0,$zero           #$t2 points to the string
-    Loop:   bne $t0,6,Exit
-        addu $t1,$a0,$t0        #the $t0 place in $a0 is added to $t1
+    add $t3,$t3,$zero           #hold individual byte
+
+    Loop:   bne $t0,1,Exit      #exit after reading one character
+        lb $t3,$t0($t2)         #load the x character in string
         addi $t0,$t0,1          #increment $t0 by 1
         j Loop
     Exit:
