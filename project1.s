@@ -15,5 +15,6 @@ main:
     syscall                     #execute code 10 to exit
 
     .data
-str:.asciiz "Enter Student ID:"
+prompt:.asciiz "Enter Student ID: "
+str:.asciiz " "
 #my ID is 2874763
