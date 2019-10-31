@@ -30,30 +30,38 @@ main:
         addu $t0,$t0,$a1                    #$t0 = $a1[$t4]
         lbu $a2,($t0)                       #load ascii value of $t0 to $a2
 
-    bgt $a2,113,OutRange                    #if $a2 > 113, jump to OutRange
-        bge $a2,97,Lower                    #if 113 >= $a2 >= 97, jump to Lower
-        bgt $a2,81,OutRange                 #if 97 > $a2 > 81, jump to OutRange
-            bge $a2,65,Upper                #if 81 >= $a2 >= 65, jump to Upper
-            bgt $a2,57,OutRange             #if 65 > $a2 > 57, jump to OutRange
-                bge $a2,48,Num              #if 57 >= $a2 >= 48, jump to Num
+        bgt $a2,113,OutRange                    #if $a2 > 113, jump to OutRange
+        bge $a2,97,Lower                        #if 113 >= $a2 >= 97, jump to Lower
+
+            bgt $a2,81,OutRange                 #if 97 > $a2 > 81, jump to OutRange
+            bge $a2,65,Upper                    #if 81 >= $a2 >= 65, jump to Upper
+
+                bgt $a2,57,OutRange             #if 65 > $a2 > 57, jump to OutRange
+                bge $a2,48,Num                  #if 57 >= $a2 >= 48, jump to Num
+
+                    j OutRange
+                    Num: subu $a2,$a2,$t3       #subtract 48 to get decimal value
+                    j InRange                   #value is within range, jump to InRange to add to sum
+
                 j OutRange
-                Num: subu $a2,$a2,$t3       #subtract 48 to get decimal value
-                j InRange
+                Upper: subu $a2,$a2,$t1         #subtract 55 to get decimal value
+                j InRange                       #value is within range, jump to InRange to add to sum
+
             j OutRange
-            Upper: subu $a2,$a2,$t1         #subtract 55 to get decimal value
-            j InRange
-        j OutRange
-        Lower: subu $a2,$a2,$t2             #subtract 87 to get decimal value
-        j InRange                           #value is within range, jump to InRange to add to sum
-    OutRange:   li $a2,0                    #value is out of range, $a2=0
-    InRange:    addu $a0,$a0,$a2            #add $a2 to sum $a0
-    addu $t4,$t4,1                          #increment $t4 by 1
-    sltu $t5,$t4,10                         #if $t4 < 10, $t5 = 1
-    j Loop                                  #return to beginning of Loop
+            Lower: subu $a2,$a2,$t2             #subtract 87 to get decimal value
+            j InRange                           #value is within range, jump to InRange to add to sum
+
+        OutRange:   li $a2,0                    #value is out of range, $a2=0
+        InRange:    addu $a0,$a0,$a2            #add $a2 to sum $a0
+
+        addu $t4,$t4,1                          #increment $t4 by 1
+        sltu $t5,$t4,10                         #if $t4 < 10, $t5 = 1
+
+        j Loop                                  #return to beginning of Loop
     Done:
 
-    li $a2,0
-    addu $a2,$a2,$a0    #hold sum in $a2
+    li $a2,0                    #reset temp
+    addu $a2,$a2,$a0            #hold sum in $a2
 
     li $v0,4                    #call code 4 (print_string)
     li $a0,0                    #$a0 = 0
