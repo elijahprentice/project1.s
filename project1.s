@@ -106,9 +106,13 @@ main:
     Out4:   li $a2,0
     Done4:  addu $a0,$a0,$a2
 
-    Num5: subu $a2,$a2,$t3
+    lbu $a2,5($t0)
+            bgt $a2,57,Out5
+                bge $a2,48,Num5
+                Num5: subu $a2,$a2,$t3
     Up5: subu $a2,$a2,$t1
     Low5: subu $a2,$a2,$t2
+    Out5:   li $a2,0
     Done5:  addu $a0,$a0,$a2
 
     li $v0,1
