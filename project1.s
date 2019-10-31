@@ -12,7 +12,7 @@ main:
     addi $t2,$t2,87
 
     lbu $a0,($t0)               #load ascii value of [offset]($t0) to $a0
-    bge $a0,$t1,OutRange
+    bgt $a0,$t1,OutRange
         subu $a0,$a0,$t2
         j InRange
     OutRange:
