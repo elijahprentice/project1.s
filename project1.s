@@ -126,14 +126,17 @@ main:
     Done5:  addu $a0,$a0,$a2
 
     lbu $a2,6($t0)
+        bgt $a2,81,Out6
+            bge $a2,65,Up6
             bgt $a2,57,Out6
                 bge $a2,48,Num6
                 j Out6
                 Num6: subu $a2,$a2,$t3
                 j Done6
-            Up5: subu $a2,$a2,$t1
+            j Out6
+            Up6: subu $a2,$a2,$t1
             j Done6
-        Low5: subu $a2,$a2,$t2
+        Low6: subu $a2,$a2,$t2
         j Done6
     Out6:    li $a2,0
     Done6:  addu $a0,$a0,$a2
