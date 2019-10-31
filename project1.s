@@ -9,12 +9,14 @@ main:
     add $t0,$t0,$a1             #$t0 holds string
 
     addi $t1,$t1,113
+    addi $t2,$t2,87
 
     lbu $a0,($t0)               #load ascii value of [offset]($t0) to $a0
-    ble $a0,$t1,OutRange
-        subiu $a0,$a0,87
+    bge $a0,$t1,OutRange
+        subu $a0,$a0,$t2
         j InRange
-    OutRange:   li $a0,0
+    OutRange:
+        li $a0,0
     InRange:
 
     #lbu $a2,1($t0)
