@@ -16,10 +16,13 @@ main:
     syscall                     #execute code 8 to read the string
 
     la $a1,str                  #$a1 points to str
+    li $a0,0                    #set sum to 0
     add $t0,$t0,$a1             #$t0 holds string
     addi $t2,$t2,87             #subtract 87 from the ascii value of lowercase letters
     addi $t1,$t1,55             #subtract 55 from the ascii value of uppercase letters
     addi $t3,$t3,48             #subtract 48 from the ascii value of integers
+    addi $t4,$t4,0              #initialize loop counter
+    addi $t5,$t5,1              #1: continue loop, 0: end loop
 
     lbu $a0,($t0)                           #load ascii value of 0($t0) to $a0
     bgt $a0,113,OutRange                    #if $a0 > 113, jump to OutRange
@@ -40,176 +43,8 @@ main:
     OutRange:   li $a0,0
     InRange:
 
-    lbu $a2,1($t0)
-    bgt $a2,113,Out1
-    bge $a2,97,Low1
-        bgt $a2,81,Out1
-        bge $a2,65,Up1
-            bgt $a2,57,Out1
-            bge $a2,48,Num1
-                j Out1
-                Num1: subu $a2,$a2,$t3
-                j Done1
-            j Out1
-            Up1: subu $a2,$a2,$t1
-            j Done1
-        j Out1
-        Low1: subu $a2,$a2,$t2
-        j Done1
-    Out1:   li $a2,0
-    Done1:  addu $a0,$a0,$a2
-
-    lbu $a2,2($t0)
-    bgt $a2,113,Out2
-    bge $a2,97,Low2
-        bgt $a2,81,Out2
-        bge $a2,65,Up2
-            bgt $a2,57,Out2
-            bge $a2,48,Num2
-                j Out2
-                Num2: subu $a2,$a2,$t3
-                j Done2
-            j Out2
-            Up2: subu $a2,$a2,$t1
-            j Done2
-        j Out2
-        Low2: subu $a2,$a2,$t2
-        j Done2
-    Out2:   li $a2,0
-    Done2:  addu $a0,$a0,$a2
-
-    lbu $a2,3($t0)
-    bgt $a2,113,Out3
-    bge $a2,97,Low3
-        bgt $a2,81,Out3
-        bge $a2,65,Up3
-            bgt $a2,57,Out3
-            bge $a2,48,Num3
-                j Out3
-                Num3: subu $a2,$a2,$t3
-                j Done3
-            j Out3
-            Up3: subu $a2,$a2,$t1
-            j Done3
-        j Out3
-        Low3: subu $a2,$a2,$t2
-        j Done3
-    Out3:   li $a2,0
-    Done3:  addu $a0,$a0,$a2
-
-    lbu $a2,4($t0)
-    bgt $a2,113,Out4
-    bge $a2,97,Low4
-        bgt $a2,81,Out4
-        bge $a2,65,Up4
-            bgt $a2,57,Out4
-            bge $a2,48,Num4
-                j Out4
-                Num4: subu $a2,$a2,$t3
-                j Done4
-            j Out4
-            Up4: subu $a2,$a2,$t1
-            j Done4
-        j Out4
-        Low4: subu $a2,$a2,$t2
-        j Done4
-    Out4:   li $a2,0
-    Done4:  addu $a0,$a0,$a2
-
-    lbu $a2,5($t0)
-    bgt $a2,113,Out5
-    bge $a2,97,Low5
-        bgt $a2,81,Out5
-        bge $a2,65,Up5
-            bgt $a2,57,Out5
-            bge $a2,48,Num5
-                j Out5
-                Num5: subu $a2,$a2,$t3
-                j Done5
-            j Out5
-            Up5: subu $a2,$a2,$t1
-            j Done5
-        j Out5
-        Low5: subu $a2,$a2,$t2
-        j Done5
-    Out5:   li $a2,0
-    Done5:  addu $a0,$a0,$a2
-
-    lbu $a2,6($t0)
-    bgt $a2,113,Out6
-    bge $a2,97,Low6
-        bgt $a2,81,Out6
-        bge $a2,65,Up6
-            bgt $a2,57,Out6
-            bge $a2,48,Num6
-                j Out6
-                Num6: subu $a2,$a2,$t3
-                j Done6
-            j Out6
-            Up6: subu $a2,$a2,$t1
-            j Done6
-        j Out6
-        Low6: subu $a2,$a2,$t2
-        j Done6
-    Out6:    li $a2,0
-    Done6:  addu $a0,$a0,$a2
-
-    lbu $a2,7($t0)
-    bgt $a2,113,Out7
-    bge $a2,97,Low7
-        bgt $a2,81,Out7
-        bge $a2,65,Up7
-            bgt $a2,57,Out7
-            bge $a2,48,Num7
-                j Out7
-                Num7: subu $a2,$a2,$t3
-                j Done7
-            j Out7
-            Up7: subu $a2,$a2,$t1
-            j Done7
-        j Out7
-        Low7: subu $a2,$a2,$t2
-        j Done7
-    Out7:    li $a2,0
-    Done7:  addu $a0,$a0,$a2
-
-    lbu $a2,8($t0)
-    bgt $a2,113,Out8
-    bge $a2,97,Low8
-        bgt $a2,81,Out8
-        bge $a2,65,Up8
-            bgt $a2,57,Out8
-            bge $a2,48,Num8
-                j Out8
-                Num8: subu $a2,$a2,$t3
-                j Done8
-            j Out8
-            Up8: subu $a2,$a2,$t1
-            j Done8
-        j Out8
-        Low8: subu $a2,$a2,$t2
-        j Done8
-    Out8:    li $a2,0
-    Done8:  addu $a0,$a0,$a2
-
-    lbu $a2,9($t0)
-    bgt $a2,113,Out9
-    bge $a2,97,Low9
-        bgt $a2,81,Out9
-        bge $a2,65,Up9
-            bgt $a2,57,Out9
-            bge $a2,48,Num9
-                j Out9
-                Num9: subu $a2,$a2,$t3
-                j Done9
-            j Out9
-            Up9: subu $a2,$a2,$t1
-            j Done9
-        j Out9
-        Low9: subu $a2,$a2,$t2
-        j Done9
-    Out9:   li $a2,0
-    Done9:  addu $a2,$a0,$a2    #hold sum in $a2
+    li $a2,0
+    addu $a2,$a2,$a0    #hold sum in $a2
 
     li $v0,4                    #call code 4 (print_string)
     li $a0,0                    #$a0 = 0
