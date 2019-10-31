@@ -15,6 +15,7 @@ main:
         bgt $a0,97,Lower        #if $a0 is greater than 97, jump to Lower
         bgt $a0,81,OutRange     #if 97 > $a0 > 81, jump to OutRange
             bgt $a0,65,Upper    #if 81 > $a0 > 65, jump to Upper
+            j OutRange
             Upper: subu $a0,$a0,$t1
             j InRange
         j OutRange
