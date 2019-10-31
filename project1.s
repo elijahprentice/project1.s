@@ -1,5 +1,11 @@
 .text
 main:
+
+#   my ID is 02874763
+#   N = 26 + (x % 11) = 27   base-27
+#   M = N - 10 = 27 - 10 = 17
+#   Mth letter in the alphabet = Q/q
+
     li $v0,4                    #call code 4 (print_string)
     la $a0,prompt               #$a0 points to the 'prompt'
     syscall                     #execute code 4 to print the prompt
