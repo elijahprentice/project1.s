@@ -164,6 +164,11 @@ main:
     Done7:  addu $a0,$a0,$a2
 
     lbu $a2,8($t0)
+                Num7: subu $a2,$a2,$t3
+            Up7: subu $a2,$a2,$t1
+        Low7: subu $a2,$a2,$t2
+    Out8:    li $a2,0
+    Done8:  addu $a0,$a0,$a2
     lbu $a2,9($t0)
 
     li $v0,1
