@@ -44,9 +44,13 @@ main:
             j InRange
         j OutRange
         Lower: subu $a2,$a2,$t2             #subtract 87 to get decimal value
-        j InRange
-    OutRange:   li $a2,0
-    InRange:
+        j InRange                           #value is within range, jump to InRange to add to sum
+    OutRange:   li $a2,0                    #value is out of range, $a2=0
+    InRange:    addu $a0,$a0,$a2            #add $a2 to sum $a0
+    addu $t4,$t4,1                          #increment $t4 by 1
+    sltu $t5,$t4,10                         #if $t4 < 10, $t5 = 1
+    j Loop                                  #return to beginning of Loop
+    Done:
 
     li $a2,0
     addu $a2,$a2,$a0    #hold sum in $a2
