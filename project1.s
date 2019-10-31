@@ -6,9 +6,13 @@ main:
     syscall                     #execute code 8 to read the string
 
     la $a1,str                  #$a1 points to str
-    addi $a1,$a1,4              #add offset to address
+    add $t2,$t2,$zero
+Loop: bne $t2,10,Exit
+    addi $a1,$a1,1              #add offset to address
     add $t0,$t0,$a1             #$t0 holds string
     lbu $a0,($t0)               #load ascii value of [offset]($t0) to $a0
+    addi $t2,$t2,1
+Exit:
     li $v0,1
     syscall
 
