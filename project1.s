@@ -7,36 +7,27 @@ main:
 
     la $a1,str                  #$a1 points to str
     add $t0,$t0,$a1             #$t0 holds string
-
     addi $t2,$t2,87
     addi $t1,$t1,55
     addi $t3,$t3,48
 
-    lbu $a0,($t0)               #load ascii value of 0($t0) to $a0
-
+    lbu $a0,($t0)                           #load ascii value of 0($t0) to $a0
     bgt $a0,113,OutRange                    #if $a0 > 113, jump to OutRange
         bge $a0,97,Lower                    #if 113 >= $a0 >= 97, jump to Lower
-
         bgt $a0,81,OutRange                 #if 97 > $a0 > 81, jump to OutRange
             bge $a0,65,Upper                #if 81 >= $a0 >= 65, jump to Upper
-
             bgt $a0,57,OutRange             #if 65 > $a0 > 57, jump to OutRange
                 bge $a0,48,Num              #if 57 >= $a0 >= 48, jump to Num
-
                 j OutRange
                 Num: subu $a0,$a0,$t3       #subtract 48 to get decimal value
                 j InRange
-            
             j OutRange
             Upper: subu $a0,$a0,$t1         #subtract 55 to get decimal value
             j InRange
-
         j OutRange
         Lower: subu $a0,$a0,$t2             #subtract 87 to get decimal value
         j InRange
-
-    OutRange:
-        li $a0,0
+    OutRange:   li $a0,0
     InRange:
 
     lbu $a2,1($t0)
