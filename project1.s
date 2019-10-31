@@ -66,6 +66,9 @@ main:
     bgt $a2,113,Out2
         bge $a2,97,Low2
 
+        bgt $a2,81,Out2
+            bge $a2,65,Up2
+            
             j Out2
             Up2: subu $a2,$a2,$t1
             j Done2
