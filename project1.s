@@ -98,6 +98,8 @@ main:
     Done3:  addu $a0,$a0,$a2
 
     lbu $a2,4($t0)
+    bgt $a2,113,Out4
+        bge $a2,97,Low4
         bgt $a2,81,Out4
             bge $a2,65,Up4
             bgt $a2,57,Out4
@@ -108,6 +110,9 @@ main:
             j Out4
             Up4: subu $a2,$a2,$t1
             j Done4
+        j Out4
+        Low4: subu $a2,$a2,$t2
+        j Done4
     Low4: subu $a2,$a2,$t2
     Out4:   li $a2,0
     Done4:  addu $a0,$a0,$a2
