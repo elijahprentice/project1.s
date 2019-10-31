@@ -183,12 +183,16 @@ main:
     Done8:  addu $a0,$a0,$a2
 
     lbu $a2,9($t0)
+        bgt $a2,81,Out9
+        bge $a2,65,Up9
             bgt $a2,57,Out9
             bge $a2,48,Num9
                 j Out9
                 Num9: subu $a2,$a2,$t3
                 j Done9
+            j Out9
             Up9: subu $a2,$a2,$t1
+            j Done9
         Low9: subu $a2,$a2,$t2
     Out9:   li $a2,0
     Done9:  addu $a0,$a0,$a2
