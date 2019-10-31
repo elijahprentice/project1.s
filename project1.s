@@ -181,7 +181,13 @@ main:
         j Done8
     Out8:    li $a2,0
     Done8:  addu $a0,$a0,$a2
+
     lbu $a2,9($t0)
+                Num9: subu $a2,$a2,$t3
+            Up9: subu $a2,$a2,$t1
+        Low9: subu $a2,$a2,$t2
+    Out9:   li $a2,0
+    Done9:  addu $a0,$a0,$a2
 
     li $v0,1
     syscall
