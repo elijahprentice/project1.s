@@ -209,7 +209,11 @@ main:
         Low9: subu $a2,$a2,$t2
         j Done9
     Out9:   li $a2,0
-    Done9:  addu $a0,$a0,$a2
+    Done9:  addu $a2,$a0,$a2
+    li $v0,4
+    li $a0,0
+    la $a0,outputLine
+    syscall
 
     li $v0,1                    #call code 1 (print_int)
     syscall                     #execute code 1 to print the sum
@@ -218,5 +222,6 @@ main:
     syscall                     #execute code 10 to exit
 
 .data
-prompt:.asciiz "Enter a ten-digit number: "
+prompt:.asciiz "Input: "
+outputLine:.asciiz "\nOutput: "
 str:.asciiz " "
