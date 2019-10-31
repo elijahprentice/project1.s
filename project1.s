@@ -31,12 +31,12 @@ main:
     InRange:
 
     lbu $a2,1($t0)
-    bgt $a2,113,Out1                        #
-        bge $a2,97,Low1
+    bgt $a2,113,Out1
+    bge $a2,97,Low1
         bgt $a2,81,Out1
-            bge $a2,65,Up1
+        bge $a2,65,Up1
             bgt $a2,57,Out1
-                bge $a2,48,Num1
+            bge $a2,48,Num1
                 j Out1
                 Num1: subu $a2,$a2,$t3
                 j Done1
@@ -51,11 +51,11 @@ main:
 
     lbu $a2,2($t0)
     bgt $a2,113,Out2
-        bge $a2,97,Low2
+    bge $a2,97,Low2
         bgt $a2,81,Out2
-            bge $a2,65,Up2
+        bge $a2,65,Up2
             bgt $a2,57,Out2
-                bge $a2,48,Num2
+            bge $a2,48,Num2
                 j Out2
                 Num2: subu $a2,$a2,$t3
                 j Done2
@@ -70,11 +70,11 @@ main:
 
     lbu $a2,3($t0)
     bgt $a2,113,Out3
-        bge $a2,97,Low3
+    bge $a2,97,Low3
         bgt $a2,81,Out3
-            bge $a2,65,Up3
+        bge $a2,65,Up3
             bgt $a2,57,Out3
-                bge $a2,48,Num3
+            bge $a2,48,Num3
                 j Out3
                 Num3: subu $a2,$a2,$t3
                 j Done3
@@ -89,11 +89,11 @@ main:
 
     lbu $a2,4($t0)
     bgt $a2,113,Out4
-        bge $a2,97,Low4
+    bge $a2,97,Low4
         bgt $a2,81,Out4
-            bge $a2,65,Up4
+        bge $a2,65,Up4
             bgt $a2,57,Out4
-                bge $a2,48,Num4
+            bge $a2,48,Num4
                 j Out4
                 Num4: subu $a2,$a2,$t3
                 j Done4
@@ -108,11 +108,11 @@ main:
 
     lbu $a2,5($t0)
     bgt $a2,113,Out5
-        bge $a2,97,Low5
+    bge $a2,97,Low5
         bgt $a2,81,Out5
-            bge $a2,65,Up5
+        bge $a2,65,Up5
             bgt $a2,57,Out5
-                bge $a2,48,Num5
+            bge $a2,48,Num5
                 j Out5
                 Num5: subu $a2,$a2,$t3
                 j Done5
@@ -127,11 +127,11 @@ main:
 
     lbu $a2,6($t0)
     bgt $a2,113,Out6
-        bge $a2,97,Low6
+    bge $a2,97,Low6
         bgt $a2,81,Out6
-            bge $a2,65,Up6
+        bge $a2,65,Up6
             bgt $a2,57,Out6
-                bge $a2,48,Num6
+            bge $a2,48,Num6
                 j Out6
                 Num6: subu $a2,$a2,$t3
                 j Done6
@@ -146,11 +146,11 @@ main:
 
     lbu $a2,7($t0)
     bgt $a2,113,Out7
-        bge $a2,97,Low7
+    bge $a2,97,Low7
         bgt $a2,81,Out7
-            bge $a2,65,Up7
+        bge $a2,65,Up7
             bgt $a2,57,Out7
-                bge $a2,48,Num7
+            bge $a2,48,Num7
                 j Out7
                 Num7: subu $a2,$a2,$t3
                 j Done7
