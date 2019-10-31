@@ -218,5 +218,5 @@ main:
     syscall                     #execute code 10 to exit
 
 .data
-prompt:.asciiz "Enter Student ID: "
+prompt:.asciiz "Enter a ten-digit number: "
 str:.asciiz " "
