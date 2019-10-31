@@ -106,6 +106,11 @@ main:
     Out4:   li $a2,0
     Done4:  addu $a0,$a0,$a2
 
+    Num5: subu $a2,$a2,$t3
+    Up5: subu $a2,$a2,$t1
+    Low5: subu $a2,$a2,$t2
+    Done5:  addu $a0,$a0,$a2
+
     li $v0,1
     syscall
 
