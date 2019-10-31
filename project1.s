@@ -11,9 +11,9 @@ main:
 
     la $a1,str                  #$a1 points to str
     add $t0,$t0,$a1             #$t0 holds string
-    addi $t2,$t2,87
-    addi $t1,$t1,55
-    addi $t3,$t3,48
+    addi $t2,$t2,87             #subtract 87 from the ascii value of lowercase letters
+    addi $t1,$t1,55             #subtract 55 from the ascii value of uppercase letters
+    addi $t3,$t3,48             #subtract 48 from the ascii value of integers
 
     lbu $a0,($t0)                           #load ascii value of 0($t0) to $a0
     bgt $a0,113,OutRange                    #if $a0 > 113, jump to OutRange
@@ -205,8 +205,9 @@ main:
     Out9:   li $a2,0
     Done9:  addu $a0,$a0,$a2
 
-    li $v0,1
-    syscall
+    li $v0,1                    #call code 1 (print_int)
+    syscall                     #execute code 1 to print the sum
+    
     li $v0,10                   #call code 10 (exit)
     syscall                     #execute code 10 to exit
 
