@@ -24,6 +24,7 @@ main:
 
                 j OutRange
                 Num: subu $a0,$a0,$t3       #subtract 48 to get decimal value
+                j InRange
             
             j OutRange
             Upper: subu $a0,$a0,$t1         #subtract 55 to get decimal value
