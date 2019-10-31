@@ -210,10 +210,14 @@ main:
         j Done9
     Out9:   li $a2,0
     Done9:  addu $a2,$a0,$a2
+
     li $v0,4
     li $a0,0
     la $a0,outputLine
     syscall
+    
+    li $a0,0
+    addu $a0,$a0,$a2
 
     li $v0,1                    #call code 1 (print_int)
     syscall                     #execute code 1 to print the sum
