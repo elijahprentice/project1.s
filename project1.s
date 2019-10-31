@@ -13,6 +13,11 @@ main:
     li $v0,1
     syscall
 
+    la $a1,str
+    addi $t0,$t0,1
+    addu $a1,$a1,$t0
+    add $t1,$t1,$a1
+
     li $v0,10                   #call code 10 (exit)
     syscall                     #execute code 10 to exit
 
