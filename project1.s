@@ -119,7 +119,9 @@ main:
             j Out5
             Up5: subu $a2,$a2,$t1
             j Done5
-    Low5: subu $a2,$a2,$t2
+        j Out5
+        Low5: subu $a2,$a2,$t2
+        j Done5
     Out5:   li $a2,0
     Done5:  addu $a0,$a0,$a2
 
