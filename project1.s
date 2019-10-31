@@ -127,8 +127,12 @@ main:
 
     lbu $a2,6($t0)
                 Num6: subu $a2,$a2,$t3
+                j Done6
             Up5: subu $a2,$a2,$t1
+            j Done6
         Low5: subu $a2,$a2,$t2
+        j Done6
+    Out:    li $a2,0
     Done6:  addu $a0,$a0,$a2
 
     lbu $a2,7($t0)
