@@ -164,6 +164,8 @@ main:
     Done7:  addu $a0,$a0,$a2
 
     lbu $a2,8($t0)
+    bgt $a2,113,Out8
+    bge $a2,97,Low8
         bgt $a2,81,Out8
         bge $a2,65,Up8
             bgt $a2,57,Out8
@@ -174,7 +176,9 @@ main:
             j Out8
             Up8: subu $a2,$a2,$t1
             j Done8
+        j Out8
         Low8: subu $a2,$a2,$t2
+        j Done8
     Out8:    li $a2,0
     Done8:  addu $a0,$a0,$a2
     lbu $a2,9($t0)
