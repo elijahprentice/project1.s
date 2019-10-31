@@ -64,7 +64,11 @@ main:
 
     lbu $a2,2($t0)
     bgt $a2,113,Out2
+        bge $a2,97,Low2
+        
+        j Out2
         Low2: subu $a2,$a2,$t2
+        j Done2
     Out2:   li $a2,0
     Done2:  addu $a0,$a0,$a2
 
