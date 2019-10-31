@@ -9,10 +9,6 @@ main:
     li $a1,11                   #read 11 characters (including null character)
     syscall                     #execute code 8 to read the string
 
-    li $v0,4                    #call code 4 (print_string)
-    la $a0,outputLine               #$a0 points to the 'outputLine'
-    syscall                     #execute code 4 to move to the next line
-
     la $a1,str                  #$a1 points to str
     add $t0,$t0,$a1             #$t0 holds string
     addi $t2,$t2,87             #subtract 87 from the ascii value of lowercase letters
@@ -218,4 +214,3 @@ main:
 .data
 prompt:.asciiz "Enter Student ID: "
 str:.asciiz " "
-outputLine:.asciiz "/n"
