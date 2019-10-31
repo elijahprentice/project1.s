@@ -11,6 +11,7 @@ main:
     addi $t2,$t2,87
     addi $t1,$t1,55
     addi $t3,$t3,48
+
     lbu $a0,($t0)               #load ascii value of 0($t0) to $a0
 
     bgt $a0,113,OutRange                    #if $a0 > 113, jump to OutRange
@@ -38,7 +39,10 @@ main:
         li $a0,0
     InRange:
 
-    #lbu $a2,1($t0)
+    lbu $a2,1($t0)
+    bgt $a2,113,Out1
+    Out1:   li $a2,0
+
     #addu $a0,$a0,$a2
 
     #lbu $a2,2($t0)
