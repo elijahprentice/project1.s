@@ -15,13 +15,13 @@ main:
     lbu $a0,($t0)               #load ascii value of 0($t0) to $a0
 
     bgt $a0,113,OutRange                    #if $a0 > 113, jump to OutRange
-        bge $a0,97,Lower                    #if 113 > $a0 > 97, jump to Lower
+        bge $a0,97,Lower                    #if 113 >= $a0 >= 97, jump to Lower
 
         bgt $a0,81,OutRange                 #if 97 > $a0 > 81, jump to OutRange
-            bge $a0,65,Upper                #if 81 > $a0 > 65, jump to Upper
+            bge $a0,65,Upper                #if 81 >= $a0 >= 65, jump to Upper
 
             bgt $a0,57,OutRange             #if 65 > $a0 > 57, jump to OutRange
-                bge $a0,48,Num              #if 57 > $a0 > 48, jump to Num
+                bge $a0,48,Num              #if 57 >= $a0 >= 48, jump to Num
 
                 j OutRange
                 Num: subu $a0,$a0,$t3       #subtract 48 to get decimal value
@@ -68,7 +68,8 @@ main:
 
         bgt $a2,81,Out2
             bge $a2,65,Up2
-
+            bgt $a2,57,Out2
+                bge $a2,48,Num2
                 j Out2
                 Num2: subu $a2,$a2,$t3
                 j Done2
