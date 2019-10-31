@@ -10,6 +10,8 @@ main:
     addu $a1,$a1,$t0            #point to x character of string in $a1
     add $t1,$t1,$a1             #add ascii value of character to $t1
     lbu $a0,($t1)               #load $t1 to $a0
+    li $v0,1
+    syscall
 
     li $v0,10                   #call code 10 (exit)
     syscall                     #execute code 10 to exit
