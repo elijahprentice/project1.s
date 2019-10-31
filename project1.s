@@ -107,6 +107,8 @@ main:
     Done4:  addu $a0,$a0,$a2
 
     lbu $a2,5($t0)
+    bgt $a2,113,Out5
+        bge $a2,97,Low5
         bgt $a2,81,Out5
             bge $a2,65,Up5
             bgt $a2,57,Out5
@@ -114,7 +116,9 @@ main:
                 j Out5
                 Num5: subu $a2,$a2,$t3
                 j Done5
+            j Out5
             Up5: subu $a2,$a2,$t1
+            j Done5
     Low5: subu $a2,$a2,$t2
     Out5:   li $a2,0
     Done5:  addu $a0,$a0,$a2
