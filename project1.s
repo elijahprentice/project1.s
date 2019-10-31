@@ -75,8 +75,10 @@ main:
     Out2:   li $a2,0
     Done2:  addu $a0,$a0,$a2
 
-    #lbu $a2,3($t0)
-    #addu $a0,$a0,$a2
+    lbu $a2,3($t0)
+    bgt $a2,113,Out3
+    Out3:   li $a2,0
+    Done3:  addu $a0,$a0,$a2
 
     li $v0,1
     syscall
