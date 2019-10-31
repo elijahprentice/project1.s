@@ -1,7 +1,11 @@
 .text
 main:
+    li $v0,4                    #call code 4 (print_string)
+    la $a0,prompt               #$a0 points to the 'prompt'
+    syscall                     #execute code 4 to print the prompt
+
     li $v0,8                    #call code 8 (read_string)
-    la $a0,str                  #$a0 points to the str
+    la $a0,str                  #$a0 points to 'str'
     li $a1,11                   #read 11 characters (including null character)
     syscall                     #execute code 8 to read the string
 
