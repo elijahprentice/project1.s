@@ -125,9 +125,13 @@ main:
     Out5:   li $a2,0
     Done5:  addu $a0,$a0,$a2
 
+    lbu $a2,6($t0)
+    lbu $a2,7($t0)
+    lbu $a2,8($t0)
+    lbu $a2,9($t0)
+    
     li $v0,1
     syscall
-
     li $v0,10                   #call code 10 (exit)
     syscall                     #execute code 10 to exit
 
