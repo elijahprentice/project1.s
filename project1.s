@@ -8,7 +8,8 @@ main:
     la $a1,str
     add $t0,$t0,$zero
     addu $a1,$a1,$t0
-    lbu $a0,($a1)
+    add $t1,$t1,$a1
+    lbu $a0,($t1)
 
     li $v0,10                   #call code 10 (exit)
     syscall                     #execute code 10 to exit
