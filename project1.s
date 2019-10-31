@@ -7,17 +7,21 @@ main:
 
     la $a1,str                  #$a1 points to str
     add $t0,$t0,$a1             #$t0 holds string
+
+    addi $t1,$t1,113
     
     lbu $a0,($t0)               #load ascii value of [offset]($t0) to $a0
+    ble $a0,$t1,OutRange
+    OutRange:
 
-    lbu $a2,1($t0)
-    addu $a0,$a0,$a2
+    #lbu $a2,1($t0)
+    #addu $a0,$a0,$a2
 
-    lbu $a2,2($t0)
-    addu $a0,$a0,$a2
+    #lbu $a2,2($t0)
+    #addu $a0,$a0,$a2
 
-    lbu $a2,3($t0)
-    addu $a0,$a0,$a2
+    #lbu $a2,3($t0)
+    #addu $a0,$a0,$a2
 
     li $v0,1
     syscall
