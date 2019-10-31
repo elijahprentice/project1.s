@@ -83,6 +83,7 @@ main:
             bge $a2,65,Up3
             bgt $a2,57,Out3
                 bge $a2,48,Num3
+                j Out3
                 Num3: subu $a2,$a2,$t3
                 j Done3
 
@@ -96,6 +97,10 @@ main:
     Out3:   li $a2,0
     Done3:  addu $a0,$a0,$a2
 
+    lbu $a2,4($t0)
+    Num4: subu $a2,$a2,$t3
+    Up4: subu $a2,$a2,$t1
+    Low4: subu $a2,$a2,$t2
     li $v0,1
     syscall
 
