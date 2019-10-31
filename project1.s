@@ -10,6 +10,10 @@ main:
     lbu $a0,($t0)               #load ascii value of [offset]($t0) to $a0
     li $v0,1
     syscall
+    lbu $a2,1($t0)
+    add $a0,$a0,$a2
+    li $v0,1
+    syscall
 
     li $v0,10                   #call code 10 (exit)
     syscall                     #execute code 10 to exit
