@@ -28,23 +28,24 @@ main:
         li $t0,0                            #prep to read next increment
         addu $t0,$t0,$t4                    #$t0 = x (or $t4)
         addu $t0,$t0,$a1                    #$t0 = $a1[$t4]
-    lbu $a0,($t0)                           #load ascii value of 0($t0) to $a0
-    bgt $a0,113,OutRange                    #if $a0 > 113, jump to OutRange
-        bge $a0,97,Lower                    #if 113 >= $a0 >= 97, jump to Lower
-        bgt $a0,81,OutRange                 #if 97 > $a0 > 81, jump to OutRange
-            bge $a0,65,Upper                #if 81 >= $a0 >= 65, jump to Upper
-            bgt $a0,57,OutRange             #if 65 > $a0 > 57, jump to OutRange
-                bge $a0,48,Num              #if 57 >= $a0 >= 48, jump to Num
+        lbu $a2,($t0)                       #load ascii value of $t0 to $a2
+
+    bgt $a2,113,OutRange                    #if $a2 > 113, jump to OutRange
+        bge $a2,97,Lower                    #if 113 >= $a2 >= 97, jump to Lower
+        bgt $a2,81,OutRange                 #if 97 > $a2 > 81, jump to OutRange
+            bge $a2,65,Upper                #if 81 >= $a2 >= 65, jump to Upper
+            bgt $a2,57,OutRange             #if 65 > $a2 > 57, jump to OutRange
+                bge $a2,48,Num              #if 57 >= $a2 >= 48, jump to Num
                 j OutRange
-                Num: subu $a0,$a0,$t3       #subtract 48 to get decimal value
+                Num: subu $a2,$a2,$t3       #subtract 48 to get decimal value
                 j InRange
             j OutRange
-            Upper: subu $a0,$a0,$t1         #subtract 55 to get decimal value
+            Upper: subu $a2,$a2,$t1         #subtract 55 to get decimal value
             j InRange
         j OutRange
-        Lower: subu $a0,$a0,$t2             #subtract 87 to get decimal value
+        Lower: subu $a2,$a2,$t2             #subtract 87 to get decimal value
         j InRange
-    OutRange:   li $a0,0
+    OutRange:   li $a2,0
     InRange:
 
     li $a2,0
