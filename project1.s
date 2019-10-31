@@ -33,7 +33,6 @@ main:
     lbu $a2,1($t0)
     bgt $a2,113,Out1                        #
         bge $a2,97,Low1
-
         bgt $a2,81,Out1
             bge $a2,65,Up1
             bgt $a2,57,Out1
@@ -41,22 +40,18 @@ main:
                 j Out1
                 Num1: subu $a2,$a2,$t3
                 j Done1
-
             j Out1
             Up1: subu $a2,$a2,$t1
             j Done1
-
         j Out1
         Low1: subu $a2,$a2,$t2
         j Done1
-        
     Out1:   li $a2,0
     Done1:  addu $a0,$a0,$a2
 
     lbu $a2,2($t0)
     bgt $a2,113,Out2
         bge $a2,97,Low2
-
         bgt $a2,81,Out2
             bge $a2,65,Up2
             bgt $a2,57,Out2
@@ -64,11 +59,9 @@ main:
                 j Out2
                 Num2: subu $a2,$a2,$t3
                 j Done2
-
             j Out2
             Up2: subu $a2,$a2,$t1
             j Done2
-
         j Out2
         Low2: subu $a2,$a2,$t2
         j Done2
@@ -78,7 +71,6 @@ main:
     lbu $a2,3($t0)
     bgt $a2,113,Out3
         bge $a2,97,Low3
-
         bgt $a2,81,Out3
             bge $a2,65,Up3
             bgt $a2,57,Out3
@@ -86,11 +78,9 @@ main:
                 j Out3
                 Num3: subu $a2,$a2,$t3
                 j Done3
-
             j Out3
             Up3: subu $a2,$a2,$t1
             j Done3
-
         j Out3
         Low3: subu $a2,$a2,$t2
         j Done3
