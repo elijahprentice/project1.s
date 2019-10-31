@@ -9,11 +9,13 @@ main:
     add $t0,$t0,$a1             #$t0 holds string
 
     addi $t2,$t2,87
+    addi $t1,$t1,55
     lbu $a0,($t0)               #load ascii value of 0($t0) to $a0
     bgt $a0,113,OutRange        #if $a0 is greater than 113, jump to OutRange
         bgt $a0,97,Lower       #if $a0 is greater than 97, jump to Lower
+        Upper: subu $a0,$a0,$t1
         j OutRange
-        Lower:subu $a0,$a0,$t2
+        Lower: subu $a0,$a0,$t2
         j InRange
     OutRange:
         li $a0,0
