@@ -145,6 +145,8 @@ main:
     Done6:  addu $a0,$a0,$a2
 
     lbu $a2,7($t0)
+    bgt $a2,113,Out7
+        bge $a2,97,Low7
         bgt $a2,81,Out7
             bg $a2,65,Up7
             bgt $a2,57,Out7
@@ -155,7 +157,9 @@ main:
             j Out7
             Up7: subu $a2,$a2,$t1
             j Done7
+        j Out7
         Low7: subu $a2,$a2,$t2
+        j Done7
     Out7:    li $a2,0
     Done7:  addu $a0,$a0,$a2
 
