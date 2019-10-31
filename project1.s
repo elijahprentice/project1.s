@@ -40,10 +40,10 @@ main:
     InRange:
 
     lbu $a2,1($t0)
-    bgt $a2,113,Out1
+    bgt $a2,113,Out1                        #
+        bge $a2,97,Done1
     Out1:   li $a2,0
-
-    #addu $a0,$a0,$a2
+    Done1:  addu $a0,$a0,$a2
 
     #lbu $a2,2($t0)
     #addu $a0,$a0,$a2
