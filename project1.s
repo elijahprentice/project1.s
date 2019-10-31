@@ -21,9 +21,13 @@ main:
     addi $t2,$t2,87             #subtract 87 from the ascii value of lowercase letters
     addi $t1,$t1,55             #subtract 55 from the ascii value of uppercase letters
     addi $t3,$t3,48             #subtract 48 from the ascii value of integers
-    addi $t4,$t4,0              #initialize loop counter
+    addi $t4,$t4,0              #initialize loop counter [x]
     addi $t5,$t5,1              #1: continue loop, 0: end loop
 
+    Loop:   beq $t5,0,Done                  #Loop jumps to Done when loop is over
+        li $t0,0                            #prep to read next increment
+        addu $t0,$t0,$t4                    #$t0 = x (or $t4)
+        addu $t0,$t0,$a1                    #$t0 = $a1[$t4]
     lbu $a0,($t0)                           #load ascii value of 0($t0) to $a0
     bgt $a0,113,OutRange                    #if $a0 > 113, jump to OutRange
         bge $a0,97,Lower                    #if 113 >= $a0 >= 97, jump to Lower
