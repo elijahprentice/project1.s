@@ -209,18 +209,18 @@ main:
         Low9: subu $a2,$a2,$t2
         j Done9
     Out9:   li $a2,0
-    Done9:  addu $a2,$a0,$a2
+    Done9:  addu $a2,$a0,$a2    #hold sum in $a2
 
-    li $v0,4
-    li $a0,0
-    la $a0,outputLine
-    syscall
+    li $v0,4                    #call code 4 (print_string)
+    li $a0,0                    #$a0 = 0
+    la $a0,outputLine           #$a0 points to 'outputLine'
+    syscall                     #execute code 4 to print the 'Output: '
     
-    li $a0,0
-    addu $a0,$a0,$a2
+    li $a0,0                    #$a0 = 0
+    addu $a0,$a0,$a2            #return sum to $a0
 
     li $v0,1                    #call code 1 (print_int)
-    syscall                     #execute code 1 to print the sum
+    syscall                     #execute code 1 to print the sum ($a0)
 
     li $v0,10                   #call code 10 (exit)
     syscall                     #execute code 10 to exit
