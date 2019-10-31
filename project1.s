@@ -148,7 +148,7 @@ main:
     bgt $a2,113,Out7
         bge $a2,97,Low7
         bgt $a2,81,Out7
-            bg $a2,65,Up7
+            bge $a2,65,Up7
             bgt $a2,57,Out7
                 bge $a2,48,Num7
                 j Out7
