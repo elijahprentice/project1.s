@@ -12,8 +12,11 @@ main:
     addi $t1,$t1,55
     lbu $a0,($t0)               #load ascii value of 0($t0) to $a0
     bgt $a0,113,OutRange        #if $a0 is greater than 113, jump to OutRange
-        bgt $a0,97,Lower       #if $a0 is greater than 97, jump to Lower
-        Upper: subu $a0,$a0,$t1
+        bgt $a0,97,Lower        #if $a0 is greater than 97, jump to Lower
+        bgt $a0,81,OutRange     #if 97 > $a0 > 81, jump to OutRange
+            bgt $a0,65,Upper    #if 81 > $a0 > 65, jump to Upper
+            Upper: subu $a0,$a0,$t1
+            j InRange
         j OutRange
         Lower: subu $a0,$a0,$t2
         j InRange
