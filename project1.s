@@ -81,7 +81,11 @@ main:
 
         bgt $a2,81,Out3
             bge $a2,65,Up3
-            
+            bgt $a2,57,Out3
+                bge $a2,48,Num3
+                Num3: subu $a2,$a2,$t3
+                j Done3
+
             j Out3
             Up3: subu $a2,$a2,$t1
             j Done3
